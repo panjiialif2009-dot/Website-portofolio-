@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maslip | Portofolio</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#07120d;
+color:white;
+overflow-x:hidden;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 8%;
+z-index:999;
+transition:.4s;
+}
+
+nav.scrolled{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+}
+
+.mas{color:#1e90ff;}
+.lip{color:white;}
+
+.menu{
+display:flex;
+gap:25px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+}
+
+.social{
+display:flex;
+gap:10px;
+}
+
+.social a{
+width:40px;
+height:40px;
+border-radius:50%;
+background:rgba(255,255,255,.08);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-decoration:none;
+}
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+padding:120px 8%;
+gap:40px;
+}
+
+.hero-text h1{
+font-size:55px;
+color: white;
+margin-bottom:20px;
+}
+
+.hero-text p{
+line-height:1.8;
+color:white;
+margin-bottom:25px;
+}
+
+.btn-group{
+display:flex;
+gap:15px;
+}
+
+.btn{
+padding:14px 24px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
+
+.btn-primary{
+background:#2dd4bf;
+color:#000;
+}
+
+.btn-outline{
+border:1px solid white;
+color:white;
+}
+
+.hero-image img{
+width:100%;
+border-radius:25px;
+}
+
+section{
+padding:90px 8%;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:40px;
+}
+.card,
+.contact-box{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:20px;
+color:white;
+backdrop-filter:blur(10px);
+margin-top:15px;
+}
+.card, .contact-box, section {
+opacity: 1 !important;
+visibility: visible !important;
+display: block !important;
+z-index: 2;
+position: relative;
+}
+/* ANIMASI SCROLL */
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all 0.8s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+padding:25px;
+border-radius:20px;
+}
+
+.gallery{
+display:flex;
+flex-direction:column;
+gap:25px;
+max-width:700px;
+margin:auto;
+}
+
+.gallery img{
+width:100%;
+border-radius:20px;
+}
+
+.contact-box{
+max-width:700px;
+margin:auto;
+background:rgba(255,255,255,.05);
+padding:30px;
+border-radius:20px;
+}
+
+footer{
+padding:30px;
+text-align:center;
+color:#aaa;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.menu{
+display:none;
+}
+
+.hero-text h1{
+font-size:42px;
+.text-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.75); /* lebih gelap biar teks jelas */
+color:white;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+border-radius:20px;
+padding:20px;
+z-index:2; /* penting biar di atas gambar */
+}
+}
+
+}
+.text-overlay h3{
+font-size:26px;
+font-weight:700;
+color:#2dd4bf; /* biar mencolok */
+margin-bottom:10px;
+text-shadow:0 0 10px rgba(0,0,0,0.9);
+z-index:3;
+}
+
+.card,
+.contact-box{
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:20px;
+color:white;
+backdrop-filter:blur(10px);
+margin-top:15px;
+}
+.card p,
+.contact-box p{
+text-shadow:0 0 5px rgba(0,0,0,0.7);
+}
+body{
+background:#07120d;
+color:white;
+}
+section{
+padding:90px 8%;
+}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="logo">
+        <span class="mas">Mas</span><span class="lip">lip</span>
+    </div>
+
+    <div class="menu">
+        <a href="#home">Home</a>
+        <a href="#bio">Biodata</a>
+        <a href="#skill">Skill</a>
+        <a href="#galeri">photo</a>
+        <a href="#kontak">Kontak</a>
+    </div>
+
+<div class="social">
+    <a href="https://www.instagram.com/maslipp1?igsh=MWxrYWdubmpoNjJ5Ng==" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://tiktok.com/@jml_090" target="_blank">
+        <i class="fab fa-tiktok"></i>
+    </a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="hero-text">
+    <h4>Portofolio Website</h4>
+    <h1>Alif Yusuf <br></h1>
+
+    <p>
+        Siswa SMK jurusan Rekayasa Perangkat Lunak yang fokus belajar coding,
+        logika algoritma, dan web development. Karena masa depan tidak dibangun dari rebahan.
+    </p>
+
+    <div class="btn-group">
+        <a href="#bio" class="btn btn-primary">Lihat Profil</a>
+        <a href="#kontak" class="btn btn-outline">Hubungi</a>
+    </div>
+</div>
+
+<div class="hero-image">
+    <div class="glow"></div>
+    <img src="IMG_20260428_160257_734.jpg">
+</div>
+</section>
+
+<!-- BIODATA -->
+<section id="bio">
+<div class="section-title">
+<h2>Biodata Lengkap</h2>
+<p>.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Informasi Diri</h3>
+<p>Nama Lengkap: Alif Yusuf</p>
+<p>Panggilan: Maslip</p>
+<p>Lahir: Bandung, 23 Des 2009</p>
+<p>Usia: 16 Tahun</p>
+<p>Agama: Islam</p>
+</div>
+
+<div class="card">
+<h3>Pendidikan</h3>
+<p>Status: Pelajar</p>
+<p>Kelas: 10</p>
+<p>Sekolah: SMK Merdeka Bandung</p>
+<p>Jurusan: RPL</p>
+</div>
+
+<div class="card">
+<h3>Kontak</h3>
+<p>Alamat: Cibeunying Kolot</p>
+<p>WA: 081-xxxx-xxxx</p>
+<p>Email: alifyusuf@email.com</p>
+</div>
+
+</div>
+</section>
+
+<!-- TENTANG -->
+<section id="tentang">
+<div class="section-title">
+<h2>Tentang Saya</h2>
+</div>
+
+<div class="card">
+<p>
+Saya Alif Yusuf, siswa kelas 10 jurusan Rekayasa Perangkat Lunak.
+Tertarik coding sejak SMP karena suka game dan penasaran cara kerja aplikasi.
+Saat ini fokus menguasai dasar pemrograman, algoritma, dan web development.
+</p>
+<br>
+<p>
+Target saya: saat kelas 11 sudah punya 5 project rapi di GitHub dan siap PKL di software house.
+</p>
+</div>
+</section>
+
+<!-- SKILL -->
+<section id="skill">
+<div class="section-title">
+<h2>Keahlian</h2>
+<p>Masih berkembang. Seperti bug juga.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Bahasa</h3>
+<p>Python Dasar</p>
+<p>Pascal</p>
+<p>HTML CSS</p>
+</div>
+
+<div class="card">
+<h3>Tools</h3>
+<p>VS Code</p>
+<p>Figma</p>
+<p>XAMPP</p>
+<p>GitHub Dasar</p>
+</div>
+
+<div class="card">
+<h3>Database</h3>
+<p>MySQL Dasar</p>
+<p>SELECT</p>
+<p>Buat Tabel</p>
+</div>
+
+<div class="card">
+<h3>Soft Skill</h3>
+<p>Cepat Belajar</p>
+<p>Kerja Tim</p>
+<p>Teliti</p>
+</div>
+
+</div>
+</section>
+
+<!-- GALERI -->
+<section id="galeri">
+<div class="section-title">
+<h2></h2>
+<p>.</p>
+</div>
+
+<div class="gallery">
+<img src="Gemini_Generated_Image_ar09zpar09zpar09.png">
+<img src="20260311_221531.jpg">
+</div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak">
+<div class="section-title">
+<h2>Kontak</h2>
+</div>
+
+<div class="contact-box">
+<p><strong>Nama:</strong> Alif Yusuf</p>
+<p><strong>WhatsApp:</strong> 081-xxxx-xxxx</p>
+<p><strong>Email:</strong> alifyusuf@email.com</p>
+<p><strong>Sekolah:</strong> SMK Merdeka Bandung</p>
+
+<br>
+<a href="#" class="btn btn-primary">Hubungi Saya</a>
+</div>
+</section>
+
+<footer>
+© 2026 Maslip | Portofolio pelajar yang sedang dibangun lebih serius dari sebagian startup.
+</footer>
+
+<script src="script.js">
+window.addEventListener("scroll", function(){
+
+const nav = document.getElementById("navbar");
+
+if(window.scrollY > 40){
+nav.classList.add("scrolled");
+}else{
+nav.classList.remove("scrolled");
+}
+
+});
+</script>
+</body>
+</html>
+
