@@ -1,461 +1,623 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maslip | Portofolio</title>
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body{
-font-family:'Poppins',sans-serif;
-background:#07120d;
-color:white;
-overflow-x:hidden;
-}
+  <title>Portfolio Maslip</title>
 
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 8%;
-z-index:999;
-transition:.4s;
-}
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-nav.scrolled{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(10px);
-}
+  <!-- ICON -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
-.logo{
-font-size:28px;
-font-weight:800;
-}
+  <style>
 
-.mas{color:#1e90ff;}
-.lip{color:white;}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
 
-.menu{
-display:flex;
-gap:25px;
-}
+    body{
+      background:#070707;
+      color:white;
+      overflow-x:hidden;
+    }
 
-.menu a{
-color:white;
-text-decoration:none;
-}
+    /* BACKGROUND GLOW */
+    body::before{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#00bfff;
+      filter:blur(200px);
+      top:-100px;
+      left:-100px;
+      opacity:.3;
+      z-index:-2;
+    }
 
-.social{
-display:flex;
-gap:10px;
-}
+    body::after{
+      content:'';
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#8a2be2;
+      filter:blur(220px);
+      bottom:-150px;
+      right:-100px;
+      opacity:.3;
+      z-index:-2;
+    }
 
-.social a{
-width:40px;
-height:40px;
-border-radius:50%;
-background:rgba(255,255,255,.08);
-display:flex;
-justify-content:center;
-align-items:center;
-color:white;
-text-decoration:none;
-}
+    /* NAVBAR */
+    nav{
+      width:100%;
+      padding:18px 8%;
+      position:fixed;
+      top:0;
+      left:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      z-index:1000;
+      transition:.4s;
+    }
 
-.hero{
-min-height:100vh;
-display:grid;
-grid-template-columns:1fr 1fr;
-align-items:center;
-padding:120px 8%;
-gap:40px;
-}
+    nav.scrolled{
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      box-shadow:0 0 20px rgba(0,0,0,.3);
+    }
 
-.hero-text h1{
-font-size:55px;
-color: white;
-margin-bottom:20px;
-}
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      background:linear-gradient(to right,#00bfff,#8a2be2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-.hero-text p{
-line-height:1.8;
-color:white;
-margin-bottom:25px;
-}
+    .menu{
+      display:flex;
+      gap:30px;
+    }
 
-.btn-group{
-display:flex;
-gap:15px;
-}
+    .menu a{
+      text-decoration:none;
+      color:white;
+      font-size:15px;
+      position:relative;
+      transition:.3s;
+    }
 
-.btn{
-padding:14px 24px;
-border-radius:30px;
-text-decoration:none;
-font-weight:600;
-}
+    .menu a::after{
+      content:'';
+      position:absolute;
+      width:0%;
+      height:2px;
+      background:#00bfff;
+      left:0;
+      bottom:-5px;
+      transition:.3s;
+    }
 
-.btn-primary{
-background:#2dd4bf;
-color:#000;
-}
+    .menu a:hover::after{
+      width:100%;
+    }
 
-.btn-outline{
-border:1px solid white;
-color:white;
-}
+    /* SOCIAL */
+    .social{
+      display:flex;
+      gap:15px;
+    }
 
-.hero-image img{
-width:100%;
-border-radius:25px;
-}
+    .social a{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:rgba(255,255,255,0.08);
+      color:white;
+      text-decoration:none;
+      transition:.4s;
+      backdrop-filter:blur(10px);
+    }
 
-section{
-padding:90px 8%;
-}
+    .social a:hover{
+      transform:translateY(-5px) scale(1.1);
+      background:linear-gradient(to right,#00bfff,#8a2be2);
+      box-shadow:0 0 20px #00bfff;
+    }
 
-.section-title{
-text-align:center;
-margin-bottom:40px;
-}
-.card,
-.contact-box{
-background:rgba(255,255,255,0.08);
-padding:20px;
-border-radius:20px;
-color:white;
-backdrop-filter:blur(10px);
-margin-top:15px;
-}
-.card, .contact-box, section {
-opacity: 1 !important;
-visibility: visible !important;
-display: block !important;
-z-index: 2;
-position: relative;
-}
-/* ANIMASI SCROLL */
-.reveal{
-opacity:0;
-transform:translateY(60px);
-transition:all 0.8s ease;
-}
+    /* HERO */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:70px;
+      padding:120px 8%;
+      flex-wrap:wrap;
+    }
 
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
+    .hero-text{
+      flex:1;
+      min-width:300px;
+      animation:fadeLeft 1s ease;
+    }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
 
-.card{
-background:rgba(255,255,255,.05);
-padding:25px;
-border-radius:20px;
-}
+    .hero-text span{
+      background:linear-gradient(to right,#00bfff,#8a2be2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-.gallery{
-display:flex;
-flex-direction:column;
-gap:25px;
-max-width:700px;
-margin:auto;
-}
+    .hero-text p{
+      color:#bdbdbd;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
 
-.gallery img{
-width:100%;
-border-radius:20px;
-}
+    .btn{
+      padding:15px 35px;
+      border:none;
+      border-radius:40px;
+      background:linear-gradient(to right,#00bfff,#8a2be2);
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+      transition:.4s;
+    }
 
-.contact-box{
-max-width:700px;
-margin:auto;
-background:rgba(255,255,255,.05);
-padding:30px;
-border-radius:20px;
-}
+    .btn:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 25px #00bfff;
+    }
 
-footer{
-padding:30px;
-text-align:center;
-color:#aaa;
-}
+    /* HERO IMAGE */
+    .hero-image{
+      flex:1;
+      min-width:300px;
+      display:flex;
+      justify-content:center;
+      position:relative;
+      animation:fadeRight 1s ease;
+    }
 
-@media(max-width:900px){
+    .hero-image img{
+      width:350px;
+      border-radius:30px;
+      position:relative;
+      z-index:2;
+      transition:.5s;
+    }
 
-.hero{
-grid-template-columns:1fr;
-}
+    .hero-image img:hover{
+      transform:translateY(-10px) scale(1.03);
+    }
 
-.menu{
-display:none;
-}
+    .glow{
+      position:absolute;
+      width:350px;
+      height:350px;
+      border-radius:50%;
+      background:linear-gradient(to right,#00bfff,#8a2be2);
+      filter:blur(80px);
+      opacity:.5;
+      animation:float 4s ease-in-out infinite;
+    }
 
-.hero-text h1{
-font-size:42px;
-.text-overlay{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.75); /* lebih gelap biar teks jelas */
-color:white;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-border-radius:20px;
-padding:20px;
-z-index:2; /* penting biar di atas gambar */
-}
-}
+    /* SECTION */
+    .about{
+      padding:100px 8%;
+      display:flex;
+      gap:40px;
+      flex-wrap:wrap;
+    }
 
-}
-.text-overlay h3{
-font-size:26px;
-font-weight:700;
-color:#2dd4bf; /* biar mencolok */
-margin-bottom:10px;
-text-shadow:0 0 10px rgba(0,0,0,0.9);
-z-index:3;
-}
+    .about-box{
+      flex:1;
+      min-width:300px;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      padding:40px;
+      border-radius:30px;
+      transition:.4s;
+    }
 
-.card,
-.contact-box{
-background:rgba(255,255,255,0.08);
-padding:20px;
-border-radius:20px;
-color:white;
-backdrop-filter:blur(10px);
-margin-top:15px;
-}
-.card p,
-.contact-box p{
-text-shadow:0 0 5px rgba(0,0,0,0.7);
-}
-body{
-background:#07120d;
-color:white;
-}
-section{
-padding:90px 8%;
-}
-</style>
+    .about-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 0 25px rgba(0,191,255,.2);
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    .about-box h2{
+      font-size:35px;
+      margin-bottom:20px;
+      color:#00bfff;
+    }
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    .about-box p{
+      color:#cfcfcf;
+      line-height:1.9;
+    }
 
-<link rel="stylesheet" href="style.css">
+    /* GALLERY */
+    .gallery{
+      padding:100px 8%;
+    }
+
+    .title{
+      text-align:center;
+      font-size:45px;
+      margin-bottom:60px;
+    }
+
+    .title span{
+      color:#00bfff;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      overflow:hidden;
+      border-radius:25px;
+      position:relative;
+      cursor:pointer;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:.5s;
+    }
+
+    .card:hover img{
+      transform:scale(1.1);
+    }
+
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
+      display:flex;
+      align-items:end;
+      padding:20px;
+      opacity:0;
+      transition:.4s;
+    }
+
+    .card:hover .overlay{
+      opacity:1;
+    }
+
+    /* FOOTER */
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#aaa;
+      border-top:1px solid rgba(255,255,255,0.08);
+      margin-top:60px;
+    }
+
+    /* ANIMATION */
+    @keyframes float{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-20px);}
+      100%{transform:translateY(0);}
+    }
+
+    @keyframes fadeLeft{
+      from{
+        opacity:0;
+        transform:translateX(-50px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    @keyframes fadeRight{
+      from{
+        opacity:0;
+        transform:translateX(50px);
+      }
+      to{
+        opacity:1;
+        transform:translateX(0);
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .hero{
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:45px;
+      }
+
+      .menu{
+        display:none;
+      }
+
+      .hero-image img{
+        width:280px;
+      }
+
+    }
+
+  </style>
 </head>
 <body>
 
-<nav id="navbar">
-    <div class="logo">
-        <span class="mas">Mas</span><span class="lip">lip</span>
-    </div>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+
+    <div class="logo">Maslip</div>
 
     <div class="menu">
-        <a href="#home">Home</a>
-        <a href="#bio">Biodata</a>
-        <a href="#skill">Skill</a>
-        <a href="#galeri">photo</a>
-        <a href="#kontak">Kontak</a>
+      <a href="#">Home</a>
+      <a href="#motto">Motto</a>
+      <a href="#biodata">Biodata</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
     </div>
 
-<div class="social">
-    <a href="https://www.instagram.com/maslipp1?igsh=MWxrYWdubmpoNjJ5Ng==" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://tiktok.com/@jml_090" target="_blank">
-        <i class="fab fa-tiktok"></i>
-    </a>
-</div>
-</nav>
+    <div class="social">
 
-<!-- HERO -->
-<section class="hero" id="home">
-<div class="hero-text">
-    <h4>Portofolio Website</h4>
-    <h1>Alif Yusuf <br></h1>
+      <!-- GANTI LINK -->
+      <a href="https://www.instagram.com/maslipp1?igsh=MWxrYWdubmpoNjJ5Ng==" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
 
-    <p>
-        Siswa SMK jurusan Rekayasa Perangkat Lunak yang fokus belajar coding,
-        logika algoritma, dan web development. Karena masa depan tidak dibangun dari rebahan.
-    </p>
+      <a href="tiktok.com/@maslipp1" target="_blank">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
 
-    <div class="btn-group">
-        <a href="#bio" class="btn btn-primary">Lihat Profil</a>
-        <a href="#kontak" class="btn btn-outline">Hubungi</a>
     </div>
-</div>
 
-<div class="hero-image">
-    <div class="glow"></div>
-    <img src="IMG_20260428_160257_734.jpg">
-</div>
-</section>
+  </nav>
 
-<!-- BIODATA -->
-<section id="bio">
-<div class="section-title">
-<h2>Biodata Lengkap</h2>
-<p>.</p>
-</div>
+  <!-- HERO -->
+  <section class="hero">
 
-<div class="grid">
+    <div class="hero-text">
 
-<div class="card">
-<h3>Informasi Diri</h3>
-<p>Nama Lengkap: Alif Yusuf</p>
-<p>Panggilan: Maslip</p>
-<p>Lahir: Bandung, 23 Des 2009</p>
-<p>Usia: 16 Tahun</p>
-<p>Agama: Islam</p>
-</div>
+      <h1>
+        Portofolio <br>
+        <span>Website</span>
+      </h1>
 
-<div class="card">
-<h3>Pendidikan</h3>
-<p>Status: Pelajar</p>
-<p>Kelas: 10</p>
-<p>Sekolah: SMK Merdeka Bandung</p>
-<p>Jurusan: RPL</p>
-</div>
+      <p>
+        Pelajar SMK MDK yang memiliki minat besar
+        di bidang teknologi, pemrograman,
+        dan desain website modern.
+      </p>
 
-<div class="card">
-<h3>Kontak</h3>
-<p>Alamat: Cibeunying Kolot</p>
-<p>WA: 081-xxxx-xxxx</p>
-<p>Email: alifyusuf@email.com</p>
-</div>
+      <button class="btn">Explore More</button>
 
-</div>
-</section>
+    </div>
 
-<!-- TENTANG -->
-<section id="tentang">
-<div class="section-title">
-<h2>Tentang Saya</h2>
-</div>
+    <div class="hero-image">
 
-<div class="card">
-<p>
-Saya Alif Yusuf, siswa kelas 10 jurusan Rekayasa Perangkat Lunak.
-Tertarik coding sejak SMP karena suka game dan penasaran cara kerja aplikasi.
-Saat ini fokus menguasai dasar pemrograman, algoritma, dan web development.
-</p>
-<br>
-<p>
-Target saya: saat kelas 11 sudah punya 5 project rapi di GitHub dan siap PKL di software house.
-</p>
-</div>
-</section>
+      <div class="glow"></div>
 
-<!-- SKILL -->
-<section id="skill">
-<div class="section-title">
-<h2>Keahlian</h2>
-<p>Masih berkembang. Seperti bug juga.</p>
-</div>
+      <!-- FOTO -->
+      <img src="IMG_20260503_094722_550.webp">
 
-<div class="grid">
+    </div>
 
-<div class="card">
-<h3>Bahasa</h3>
-<p>Python Dasar</p>
-<p>Pascal</p>
-<p>HTML CSS</p>
-</div>
+  </section>
 
-<div class="card">
-<h3>Tools</h3>
-<p>VS Code</p>
-<p>Figma</p>
-<p>XAMPP</p>
-<p>GitHub Dasar</p>
-</div>
+  <!-- MOTTO -->
+  <section class="about" id="motto">
 
-<div class="card">
-<h3>Database</h3>
-<p>MySQL Dasar</p>
-<p>SELECT</p>
-<p>Buat Tabel</p>
-</div>
+    <div class="about-box">
 
-<div class="card">
-<h3>Soft Skill</h3>
-<p>Cepat Belajar</p>
-<p>Kerja Tim</p>
-<p>Teliti</p>
-</div>
+      <h2>Motto Hidup</h2>
 
-</div>
-</section>
+      <p style="font-size:20px;">
+        “Terus belajar, terus berkembang,
+        dan jangan takut mencoba hal baru.”
+      </p>
 
-<!-- GALERI -->
-<section id="galeri">
-<div class="section-title">
-<h2></h2>
-<p>.</p>
-</div>
+    </div>
 
-<div class="gallery">
-<img src="Gemini_Generated_Image_ar09zpar09zpar09.png">
-<img src="20260311_221531.jpg">
-</div>
-</section>
+  </section>
 
-<!-- KONTAK -->
-<section id="kontak">
-<div class="section-title">
-<h2>Kontak</h2>
-</div>
+  <!-- BIODATA -->
+  <section class="about" id="biodata">
 
-<div class="contact-box">
-<p><strong>Nama:</strong> Alif Yusuf</p>
-<p><strong>WhatsApp:</strong> 081-xxxx-xxxx</p>
-<p><strong>Email:</strong> alifyusuf@email.com</p>
-<p><strong>Sekolah:</strong> SMK Merdeka Bandung</p>
+    <div class="about-box">
 
-<br>
-<a href="#" class="btn btn-primary">Hubungi Saya</a>
-</div>
-</section>
+      <h2>Data Pribadi</h2>
 
-<footer>
-© 2026 Maslip | Portofolio pelajar yang sedang dibangun lebih serius dari sebagian startup.
-</footer>
+      <p>
+        <b>Nama Lengkap :</b> Alif Yusuf Nur Fadillah <br><br>
 
-<script src="script.js">
-window.addEventListener("scroll", function(){
+        <b>Nama Panggilan :</b> Maslip <br><br>
 
-const nav = document.getElementById("navbar");
+        <b>Tempat, Tanggal Lahir :</b>
+        Bandung, 23 Desember 2009 <br><br>
 
-if(window.scrollY > 40){
-nav.classList.add("scrolled");
-}else{
-nav.classList.remove("scrolled");
-}
+        <b>Jenis Kelamin :</b> Laki-laki <br><br>
 
-});
-</script>
+        <b>Agama :</b> Islam <br><br>
+
+        <b>Kewarganegaraan :</b> Indonesia <br><br>
+
+        <b>Status :</b> Pelajar <br><br>
+
+        <b>Alamat :</b>
+        Jalan Cibeunying Kolot No 32 RT 1 RW 21,
+        Kelurahan Sadang Serang,
+        Kecamatan Coblong,
+        Bandung, Jawa Barat, Indonesia <br><br>
+
+        <b>No HP :</b> 08xxxxxxxxxx <br><br>
+
+        <b>Tinggi Badan :</b> 170 cm <br><br>
+
+        <b>Berat Badan :</b> 50 kg
+
+      </p>
+
+    </div>
+
+    <div class="about-box">
+
+      <h2>Pengalaman</h2>
+
+      <p>
+        ✔ Membuat website portofolio modern <br><br>
+
+        ✔ Membuat aplikasi sederhana desktop dan web <br><br>
+
+        ✔ Membuat project IoT sederhana menggunakan Wokwi <br><br>
+
+        ✔ Presentasi project UKK <br><br>
+
+        ✔ Membuat desain animasi website menggunakan CSS
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+
+    <div class="about-box">
+
+      <h2>Deskripsi Singkat</h2>
+
+      <p>
+        Saya adalah seorang pelajar SMK MDK
+        yang memiliki minat besar di bidang teknologi,
+        pemrograman, dan desain website.
+        Saya senang mempelajari hal baru terutama
+        tentang pengembangan aplikasi,
+        animasi web, dan dunia digital kreatif.
+        Saya mampu bekerja sama dalam tim maupun individu
+        serta memiliki semangat belajar yang tinggi.
+      </p>
+
+    </div>
+
+    <div class="about-box">
+
+      <h2>Skill</h2>
+
+      <p>
+        ✔ HTML <br><br>
+
+        ✔ CSS <br><br>
+
+        ✔ JavaScript <br><br>
+
+        ✔ UI Design <br><br>
+
+        ✔ Responsive Website <br><br>
+
+        ✔ CSS Animation <br><br>
+
+        ✔ IoT Wokwi
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+
+    <h1 class="title">
+      My <span>Gallery</span>
+    </h1>
+
+    <div class="gallery-grid">
+
+      <div class="card">
+
+        <img src="IMG_20260428_160257_734.jpg">
+
+        <div class="overlay">
+          <h3>Creative Design</h3>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Screenshot_20260516-085750.png">
+
+        <div class="overlay">
+          <h3>Modern Style</h3>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="Screenshot_20260528-163117.png">
+
+        <div class="overlay">
+          <h3>Elegant Look</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Portfolio Maslip
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // NAVBAR BLUR
+    const navbar = document.getElementById("navbar");
+
+    window.addEventListener("scroll", () => {
+
+      if(window.scrollY > 50){
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+
+    });
+
+  </script>
+
 </body>
 </html>
-
